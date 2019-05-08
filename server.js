@@ -1,5 +1,7 @@
 // Pull in posts/users and set up express 
 const express = require('express');
+const helmet = require('helmet');
+
 const postsRouter = require ('./data/helpers/postsRouter');
 const usersRouter = require ('./data/helpers/usersRouter');
 
@@ -7,15 +9,17 @@ const usersRouter = require ('./data/helpers/usersRouter');
 
 const server = express();;
 server.use(express.json());
+server.use(helmet());
 
 
 
+// write name case middleware
 
-// write name case middleware (req, res, next) => { const {name } = req.body; if no name, 404 need name, next, else next}
 
 //set up user endpoints
 server.use('/api/users', usersRouter);
 server.use('/api/posts', postsRouter);
+
 
 
 

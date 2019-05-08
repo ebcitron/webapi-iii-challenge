@@ -14,5 +14,9 @@ usersRouter.get('/', async (req, res) => {
     }
 });
 
+usersRouter.post('/', upName, async(req,res) => {
+    
+})
+
 
 module.exports = usersRouter;
