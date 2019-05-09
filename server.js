@@ -2,8 +2,8 @@
 const express = require('express');
 const helmet = require('helmet');
 
-const postsRouter = require ('./data/helpers/postsRouter');
-const usersRouter = require ('./data/helpers/usersRouter');
+const postsRouter = require('./data/helpers/postsRouter');
+const usersRouter = require('./data/helpers/usersRouter');
 
 
 
@@ -14,7 +14,15 @@ server.use(helmet());
 
 
 // write name case middleware
-
+const upName =(req, res, next) => {
+    const name = req.body.name;
+    const upName = req.body.name.toUppercase();
+    if (name === upName) {
+        next(); 
+    } else {
+        res.status(404).json({message: "Name needs to be capatilized!" })
+    }
+   };
 
 //set up user endpoints
 server.use('/api/users', usersRouter);

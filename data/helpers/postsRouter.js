@@ -14,4 +14,6 @@ postsRouter.get('/', async (req, res) => {
     }
 });
 
+
+
 module.exports = postsRouter;
